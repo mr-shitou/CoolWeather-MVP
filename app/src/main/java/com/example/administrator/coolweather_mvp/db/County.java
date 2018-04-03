@@ -1,4 +1,4 @@
-package db;
+package com.example.administrator.coolweather_mvp.db;
 
 import org.litepal.crud.DataSupport;
 

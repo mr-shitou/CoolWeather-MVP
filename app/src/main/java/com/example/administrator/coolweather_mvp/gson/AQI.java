@@ -1,4 +1,4 @@
-package gson;
+package com.example.administrator.coolweather_mvp.gson;
 
 public class AQI {
 
