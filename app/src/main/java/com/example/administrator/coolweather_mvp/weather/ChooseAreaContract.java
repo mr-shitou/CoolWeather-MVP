@@ -1,14 +1,8 @@
-package com.example.administrator.coolweather_mvp.Weather;
-
-import android.app.Activity;
+package com.example.administrator.coolweather_mvp.weather;
 
 import com.example.administrator.coolweather_mvp.BasePresenter;
 import com.example.administrator.coolweather_mvp.BaseView;
-import com.example.administrator.coolweather_mvp.db.City;
-import com.example.administrator.coolweather_mvp.db.County;
-import com.example.administrator.coolweather_mvp.db.Province;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,14 +23,13 @@ public interface ChooseAreaContract {
         void showCounties();
 
         void BeginqueryFromServer();
+
         void EndqueryFromServer();
 
-        void VonItemClick();
     }
 
     interface Presenter extends BasePresenter {
-        //void onItemClick(int position,List<String> dataList);
-        //void backButtonOnClick(List<String> dataList);
+
         void queryProvince(List<String> dataList);
 
         void queryCities(List<String> dataList);
@@ -44,7 +37,6 @@ public interface ChooseAreaContract {
         void queryCounties( List<String> dataList);
 
         void queryFromeServer(String address, final String type,List<String> dataList);
-        //void requestWeather(String weatherId);
         void getSelectItem (int level,int position);
         String  getSelectCounty(int level,int position);
     }

@@ -1,17 +1,22 @@
-package com.example.administrator.coolweather_mvp.Weather;
+package com.example.administrator.coolweather_mvp.weather;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.administrator.coolweather_mvp.MainActivity;
-import com.example.administrator.coolweather_mvp.Weather.ChooseAreaContract;
-import com.example.administrator.coolweather_mvp.Weather.WeatherActivity;
+import com.example.administrator.coolweather_mvp.R;
 import com.example.administrator.coolweather_mvp.db.City;
 import com.example.administrator.coolweather_mvp.db.County;
 import com.example.administrator.coolweather_mvp.db.Province;
+import com.example.administrator.coolweather_mvp.gson.Forecast;
+import com.example.administrator.coolweather_mvp.gson.Weather;
+import com.example.administrator.coolweather_mvp.service.AutoUpdateService;
 import com.example.administrator.coolweather_mvp.util.HttpUtil;
 import com.example.administrator.coolweather_mvp.util.Utility;
 
@@ -24,9 +29,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-import static com.example.administrator.coolweather_mvp.Weather.ChooseAreaFragment.LEVEL_CITY;
-import static com.example.administrator.coolweather_mvp.Weather.ChooseAreaFragment.LEVEL_COUNTY;
-import static com.example.administrator.coolweather_mvp.Weather.ChooseAreaFragment.LEVEL_PROVINCE;
+import static com.example.administrator.coolweather_mvp.weather.ChooseAreaFragment.LEVEL_CITY;
+import static com.example.administrator.coolweather_mvp.weather.ChooseAreaFragment.LEVEL_PROVINCE;
 import static org.litepal.LitePalApplication.getContext;
 
 /**
@@ -41,12 +45,16 @@ public class ChooseAreaPresenter implements ChooseAreaContract.Presenter {
     private List<County> countyList;
     public static  Province selectedProvince;
     public static City selectedCity;
+    SharedPreferences pref;  //= PreferenceManager.getDefaultSharedPreferences(this);
+    private String mweatherId;
 
-    public ChooseAreaPresenter(@NonNull ChooseAreaContract.view View,Activity activity) {
+    public ChooseAreaPresenter(@NonNull ChooseAreaContract.view View, Activity activity) {
+        //传递View和Activity过来
         this.activity = activity;
         mView = View;
         mView.setPresenter(this);
     }
+
     @Override
     public void start() {
     }
@@ -169,10 +177,4 @@ public class ChooseAreaPresenter implements ChooseAreaContract.Presenter {
         return countyList.get(position).getWeatherId();
 
     }
-
-
-    public void requestWeather(String weatherId) {
-
-    }
-
 }
