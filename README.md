@@ -3,7 +3,7 @@
 
 ## 为什么有这个
 
-**个人练习MVP模式，所以选用这个可能每个人都熟悉的CoolWeather来玩玩** emjio :smile:
+**个人练习MVP模式，所以选用这个可能每个人都熟悉的CoolWeather来玩玩** :smile:
 
 > 需要注意的地方
 
